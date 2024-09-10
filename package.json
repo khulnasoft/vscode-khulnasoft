@@ -1,0 +1,164 @@
+{
+    "name": "vscode-khulnasoft",
+    "displayName": "KhulnaSoft",
+    "description": "Detect bugs and quality issues in JavaScript, TypeScript, React and Vue.js more precisely",
+    "version": "1.63.1",
+    "author": "KhulnaSoft",
+    "publisher": "KhulnaSoft",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/khulnasoft/vscode-khulnasoft.git"
+    },
+    "icon": "khulnasoft_icon.png",
+    "engines": {
+        "vscode": "^1.56.0"
+    },
+    "categories": [
+        "Linters"
+    ],
+    "keywords": [
+        "javascript",
+        "typescript",
+        "react",
+        "linters",
+        "vuejs"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./client/out/extension",
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "KhulnaSoft",
+            "properties": {
+                "khulnasoft.enable": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Controls whether KhulnaSoft inspection should be enabled."
+                },
+                "khulnasoft.server": {
+                    "type": "string",
+                    "default": "https://khulnasoft.com",
+                    "description": "Configures the KhulnaSoft server url."
+                },
+                "khulnasoft.proxy": {
+                    "type": "string",
+                    "description": "Configures the proxy. If not set will be taken from the http_proxy environment variable."
+                },
+                "khulnasoft.ignoreConfirmWarning": {
+                    "type": "boolean",
+                    "description": "Controls whether you allow transferring your code to the KhulnaSoft server without prompt. Transferred code is completely deleted right after the inspection.",
+                    "default": false
+                },
+                "khulnasoft.ignoreRules": {
+                    "type": "array",
+                    "description": "Configures the rules to be ignored. (Restart required)",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    }
+                },
+                "khulnasoft.ignorePatterns": {
+                    "type": "array",
+                    "description": "Configures the files to be ignored. (Restart required)",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    }
+                },
+                "khulnasoft.fileSuffixes": {
+                    "type": "array",
+                    "description": "Configures additional suffixes for files to analyze. (Restart required)",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    }
+                },
+                "khulnasoft.showDecorators": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Controls whether the problem of the code should be shown along with the code."
+                },
+                "khulnasoft.serverEmbedded.enable": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Controls whether KhulnaSoft inspection should be executed via the embedded server rather than KhulnaSoft server. (Restart required)"
+                },
+                "khulnasoft.serverEmbedded.serverJar": {
+                    "type": "string",
+                    "description": "Configures the JAR file for the embedded server. (Restart required)"
+                },
+                "khulnasoft.serverEmbedded.license": {
+                    "type": "string",
+                    "description": "Configures the license for the embedded analysis."
+                },
+                "khulnasoft.serverEmbedded.eslint.enable": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Controls whether ESLint analysis should be executed."
+                },
+                "khulnasoft.serverEmbedded.eslint.merge": {
+                    "type": "string",
+                    "default": "khulnasoft",
+                    "description": "Option for how identical issues of KhulnaSoft and ESLint are merged. ('khulnasoft' | 'eslint' | 'both')"
+                }
+            }
+        },
+        "commands": [
+            {
+                "category": "KhulnaSoft",
+                "command": "khulnasoft.inspectProject",
+                "title": "Inspect Project"
+            },
+            {
+                "category": "KhulnaSoft",
+                "command": "khulnasoft.clearProject",
+                "title": "Clear Project Problems"
+            },
+            {
+                "category": "KhulnaSoft",
+                "command": "khulnasoft.setToken",
+                "title": "Configure Access Token"
+            },
+            {
+                "category": "KhulnaSoft",
+                "command": "khulnasoft.deleteToken",
+                "title": "Delete Access Token"
+            },
+            {
+                "category": "KhulnaSoft",
+                "command": "khulnasoft.showTokenInfo",
+                "title": "Show Access Token Info"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile:client": "tsc -p ./client/tsconfig.json",
+        "compile:server": "tsc -p ./server/tsconfig.json",
+        "watch:client": "tsc -w -p ./client/tsconfig.json",
+        "watch:server": "tsc -w -p ./server/tsconfig.json",
+        "compile": "npm run compile:client && npm run compile:server",
+        "postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
+        "install-server": "npm run compile:client && npm run compile:server-to-client",
+        "deploy": "vsce publish",
+        "package": "vsce package"
+    },
+    "devDependencies": {
+        "@types/node": "^8.10.62",
+        "@vscode/vsce": "^2.16.0",
+        "typescript": "^4.3.2"
+    },
+    "dependencies": {}
+}
