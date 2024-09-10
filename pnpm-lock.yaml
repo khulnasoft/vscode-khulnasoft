@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@types/node':
-        specifier: ^8.10.62
-        version: 8.10.66
+        specifier: ^20.0.0
+        version: 20.10.5
       '@vscode/vsce':
         specifier: ^2.16.0
         version: 2.32.0
