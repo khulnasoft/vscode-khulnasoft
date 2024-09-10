@@ -1,0 +1,27 @@
+{
+    "name": "vscode-khulnasoft",
+    "displayName": "KhulnaSoft",
+    "description": "Detect bugs and quality issues in JavaScript, TypeScript, React and Vue.js more precisely",
+    "version": "1.63.1",
+    "author": "KhulnaSoft",
+    "publisher": "KhulnaSoft",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/khulnasoft/vscode-khulnasoft.git"
+    },
+    "engines": {
+        "vscode": "^1.56.0"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/vscode": "~1.56.0",
+        "lodash": "^4.17.21",
+        "showdown": "^1.9.1",
+        "showdown-htmlescape": "^0.1.9",
+        "vscode-languageclient": "^5.0.1"
+    },
+    "devDependencies": {
+        "vscode-test": "^1.4.0"
+    }
+}
