@@ -16,7 +16,7 @@
     "scripts": {},
     "dependencies": {
         "@types/vscode": "~1.56.0",
-        "lodash": "^4.17.21",
+        "lodash": "^4.17.23",
         "showdown": "^1.9.1",
         "showdown-htmlescape": "^0.1.9",
         "vscode-languageclient": "^5.0.1"
